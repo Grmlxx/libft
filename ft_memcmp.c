@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alamaoui <alamaoui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/15 09:49:12 by alamaoui          #+#    #+#             */
-/*   Updated: 2023/12/30 20:17:01 by alamaoui         ###   ########.fr       */
+/*   Created: 2023/11/15 13:21:11 by alamaoui          #+#    #+#             */
+/*   Updated: 2023/11/30 16:04:47 by alamaoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <fcntl.h>
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
+{
+	unsigned char	*ss1;
+	unsigned char	*ss2;
+	size_t			i;
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
-# endif
-
-char	*get_next_line(int fd);
-size_t	ft_strlen(char *s);
-char	*ft_strjoin(char *s1, char *s2);
-char	*ft_strchr(char *s, int c);
-char	*ft_substr(char *s, unsigned int start, size_t len);
-char	*ft_strdup(char *s1);
-
-#endif
+	ss1 = (unsigned char *)s1;
+	ss2 = (unsigned char *)s2;
+	i = 0;
+	if (ss1 == ss2)
+		return (0);
+	while (i < n && ss1[i] == ss2[i])
+		i++;
+	if (i == n)
+		return (0);
+	return (ss1[i] - ss2[i]);
+}
